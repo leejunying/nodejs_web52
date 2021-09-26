@@ -134,9 +134,10 @@ const addstudent = async(data) => {
         //Auto set new id equal length of list
         data.id = newlist.length;
         let newstudent = data;
-
-        newlist = [...newlist, newstudent];
-
+        if (newlist.length == 0)
+            newlist = [newstudent];
+        else
+            newlist = [...newlist, newstudent]
         newlist = JSON.stringify(newlist);
 
         let result = await fs.promises.writeFile("./student.json", newlist);
