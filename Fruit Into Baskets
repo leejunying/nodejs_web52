@@ -1,0 +1,50 @@
+const Totaltree=(fruits)=>{
+  let result=[]
+  let a=fruits[0]
+  let b=0
+  let start=0
+  let max
+  for(let i=0;i<=fruits.length;i++)
+   {
+     if(fruits[i]!=a&&b==0)
+     b=fruits[i]
+     
+     if(fruits[i]!==a&&fruits[i]!=b)
+     {    
+       result.push(fruits.slice(start,i))
+        i=i-1
+       start=i 
+       a=fruits[i]
+       b=0
+        
+     }
+    
+  }
+
+ 
+ if(result.length>1)
+ {
+  for(let i=0;i<result.length;i++)
+  { 
+    
+     max=result[0].length
+
+       if(result[i].length>max)
+       max=result[i]
+  }
+
+  console.log(max)
+   return result
+ }
+ else
+  console.log(result[0])
+  return result[0]
+}
+
+let fruits1=['A', 'B', 'C', 'B', 'B', 'C']
+let fruits2=['A', 'B', 'C', 'A', 'C']
+let fruits3=["1","2","1"]
+
+Totaltree(fruits1)
+Totaltree(fruits2)
+Totaltree(fruits3)
